@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  只有 debug 构建才会合并这个文件：
+  开发期手机连电脑（http://192.168.x.x:3000）必须放行明文 HTTP。
+  release 构建不含这一行，默认 Android 9+ 就是禁用明文，上线走 HTTPS。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:usesCleartextTraffic="true"
+        tools:replace="android:usesCleartextTraffic" />
+
+</manifest>

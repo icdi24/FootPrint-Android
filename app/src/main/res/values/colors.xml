@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 与 DESIGN.md 一致：羊皮纸底色 -->
+    <color name="parchment">#FAF3E3</color>
+</resources>

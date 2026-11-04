@@ -1,0 +1,15 @@
+# 机器相关 / 构建产物，全部不进 git
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/captures/
+.externalNativeBuild
+.cxx
+local.properties
+*.hprof
+
+.kotlin/

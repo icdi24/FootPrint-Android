@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  主 manifest。注意这里**不放** usesCleartextTraffic：
+  明文 HTTP 只在 debug 放行，见 src/debug/AndroidManifest.xml。
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+      PACKAGE_USAGE_STATS 是特殊权限（Settings → 特殊应用权限 → 使用情况访问）：
+      - 它不能用 requestPermissions() 弹窗申请，只能跳系统设置让用户手动打开
+      - 声明在这里主要是为了在系统设置里能定位到本应用
+      - tools:ignore="ProtectedPermissions" 只是压掉 lint 的"受保护权限"警告
+    -->
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!--
+      Android 11+ 默认做「包可见性」限制：不声明的话，packageManager.getApplicationInfo()
+      对大部分第三方 App 会直接抛 NameNotFoundException，结果界面只能显示包名
+      （com.tencent.mm 这种），而不是「微信」。
+
+      本应用只在自己的手机上用、不上架 Google Play，所以直接用最宽的 QUERY_ALL_PACKAGES。
+      如果将来要上架，Google Play 对这条权限审核很严，届时应改成 <queries> 精确声明，
+      或者退而求其次只显示包名/自建映射表。
+    -->
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Footprint">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

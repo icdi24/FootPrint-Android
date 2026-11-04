@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 启动主题：只提供窗口背景色（羊皮纸色），避免冷启动时白屏闪一下。
+     界面本身全部由 Compose 绘制，这里不引 Material 组件主题。 -->
+<resources>
+    <style name="Theme.Footprint" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/parchment</item>
+        <item name="android:statusBarColor">@color/parchment</item>
+        <item name="android:navigationBarColor">@color/parchment</item>
+    </style>
+</resources>
